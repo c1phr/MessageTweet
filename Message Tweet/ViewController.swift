@@ -10,9 +10,9 @@ import Foundation
 import Cocoa
 import Accounts
 import SwifterMac
-import SQLite
 
-class ViewController: NSViewController {
+
+class MessageViewController: NSViewController {
     var twitterAccount: ACAccount = ACAccount()
     
     override func viewDidLoad() {
@@ -63,37 +63,16 @@ class ViewController: NSViewController {
                 }
             }
         }
-        
-        println(getMessages())
-        // Populate list of messages
+    }
+    @IBOutlet var messageHelper: MessageHelper!
+    @IBOutlet weak var MessageTable: NSTableView!
+    @IBOutlet weak var tweetButton: NSButton!
+    @IBAction func tweetButtonPressed(sender: NSButton) {
+        let message:String = messageHelper.messages[MessageTable.selectedRow]
+        println(message)
     }
     
-    func getMessages() -> Array<String>
-    {
-        var messages = [String]()
-        var relations = [Int]()
-        let db = Database("~/Library/Messages/chat.db", readonly: true)
-        let message_db = db["message"]
-        let chat_message_join = db["chat_message_join"]
-        let message_text = Expression<String>("text")
-        let rowid = Expression<Int>("ROWID")
-        let chat_id = Expression<Int>("chat_id")
-        let message_id = Expression<Int>("message_id")
-        
-        let message_relation = chat_message_join.select(message_id).filter(chat_id == 76)
-        
-        for relation in message_relation
-        {
-            relations.append(relation[message_id])
-        }
-        
-        let query = message_db.select(message_text).filter(contains(relations, rowid)).order(rowid.desc).limit(10)
-        
-        for message in query
-        {
-            messages.append(message[message_text])
-        }
-        
-        return messages
-    }
+    
+    
+    
 }

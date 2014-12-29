@@ -22,48 +22,79 @@
             </objects>
             <point key="canvasLocation" x="469" y="306"/>
         </scene>
-        <!--View Controller-->
+        <!--Message View Controller-->
         <scene sceneID="uyn-VE-ehI">
             <objects>
-                <viewController id="Wjf-x0-oth" sceneMemberID="viewController">
+                <viewController id="Wjf-x0-oth" customClass="MessageViewController" customModule="Message_Tweet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="SIv-lh-hEx">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <rect key="frame" x="0.0" y="0.0" width="951" height="295"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <scrollView fixedFrame="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XfX-rI-o0N">
-                                <rect key="frame" x="0.0" y="30" width="480" height="235"/>
-                                <clipView key="contentView" misplaced="YES" id="XCx-fo-meW">
-                                    <rect key="frame" x="1" y="1" width="223" height="133"/>
+                            <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6KB-iA-amA">
+                                <rect key="frame" x="20" y="45" width="911" height="230"/>
+                                <clipView key="contentView" misplaced="YES" id="VXy-ws-WS0">
+                                    <rect key="frame" x="1" y="0.0" width="238" height="134"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <textView importsGraphics="NO" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="Z5i-H0-82r">
-                                            <rect key="frame" x="0.0" y="0.0" width="223" height="133"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" id="Irg-Xi-iTk">
+                                            <rect key="frame" x="0.0" y="0.0" width="909" height="19"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <size key="minSize" width="463" height="233"/>
-                                            <size key="maxSize" width="463" height="10000000"/>
-                                            <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                            <size key="minSize" width="463" height="233"/>
-                                            <size key="maxSize" width="463" height="10000000"/>
-                                        </textView>
+                                            <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
+                                            <tableColumns>
+                                                <tableColumn width="906" minWidth="40" maxWidth="1000" id="yNl-08-ddk">
+                                                    <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
+                                                        <font key="font" metaFont="smallSystem"/>
+                                                        <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                                    </tableHeaderCell>
+                                                    <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="SDH-Kj-soK">
+                                                        <font key="font" metaFont="system"/>
+                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                    <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                                </tableColumn>
+                                            </tableColumns>
+                                            <connections>
+                                                <outlet property="dataSource" destination="yfR-9h-hQJ" id="Awy-Th-0ne"/>
+                                            </connections>
+                                        </tableView>
                                     </subviews>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </clipView>
-                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="tqQ-yV-b4K">
-                                    <rect key="frame" x="-100" y="-100" width="87" height="18"/>
+                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="yhy-Nn-PWY">
+                                    <rect key="frame" x="1" y="119" width="223" height="15"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
-                                <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="dPC-Y7-13h">
-                                    <rect key="frame" x="224" y="1" width="15" height="133"/>
+                                <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="9Wk-rN-Sxn">
+                                    <rect key="frame" x="224" y="17" width="15" height="102"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qem-xs-J7f">
+                                <rect key="frame" x="14" y="-3" width="112" height="32"/>
+                                <buttonCell key="cell" type="push" title="Tweet" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="s5T-PZ-NCj">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                    <connections>
+                                        <action selector="tweetButtonPressed:" target="Wjf-x0-oth" id="Vrs-v7-xkZ"/>
+                                    </connections>
+                                </buttonCell>
+                            </button>
                         </subviews>
                     </view>
+                    <connections>
+                        <outlet property="MessageTable" destination="Irg-Xi-iTk" id="0Uk-IY-t1Y"/>
+                        <outlet property="messageHelper" destination="yfR-9h-hQJ" id="rfT-np-DNG"/>
+                        <outlet property="tweetButton" destination="qem-xs-J7f" id="kFe-Qw-ULi"/>
+                    </connections>
                 </viewController>
                 <customObject id="8tW-6x-FBi" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <customObject id="yfR-9h-hQJ" customClass="MessageHelper" customModule="Message_Tweet" customModuleProvider="target"/>
             </objects>
-            <point key="canvasLocation" x="469" y="695"/>
+            <point key="canvasLocation" x="704.5" y="707.5"/>
         </scene>
     </scenes>
 </document>
