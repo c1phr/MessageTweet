@@ -74,6 +74,7 @@ class MessageViewController: NSViewController {
         {
             var dest = segue.destinationController as EditViewController
             dest.message = messageHelper.messages[MessageTable.selectedRow]
+            dest.twitterAccount = self.twitterAccount
         }
     }
     
