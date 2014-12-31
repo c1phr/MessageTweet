@@ -67,12 +67,18 @@ class MessageViewController: NSViewController {
     @IBOutlet var messageHelper: MessageHelper!
     @IBOutlet weak var MessageTable: NSTableView!
     @IBOutlet weak var tweetButton: NSButton!
-    @IBAction func tweetButtonPressed(sender: NSButton) {
-        let message:String = messageHelper.messages[MessageTable.selectedRow]
-        println(message)
+    @IBOutlet weak var selectButton: NSButton!
+    
+    override func prepareForSegue(segue: NSStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "EditTweet"
+        {
+            var dest = segue.destinationController as EditViewController
+            dest.message = messageHelper.messages[MessageTable.selectedRow]
+        }
     }
     
-    
-    
-    
+    @IBAction func selectButtonPressed(sender: NSButton) {
+        self.performSegueWithIdentifier("EditTweet", sender: self)
+        
+    }
 }
