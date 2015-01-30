@@ -31,7 +31,7 @@ class MessageHelper : NSObject, NSTableViewDataSource
         let chat_message_join = db["chat_message_join"]
         let chat_name_table = db["chat"]
         
-        let message_text = Expression<String>("text")
+        let message_text = Expression<String?>("text")
         let rowid = Expression<Int>("ROWID")
         let chat_id = Expression<Int>("chat_id")
         let message_id = Expression<Int>("message_id")
@@ -51,11 +51,15 @@ class MessageHelper : NSObject, NSTableViewDataSource
             relations.append(relation[message_id])
         }
         
-        let query = message_db.select(message_text).filter(contains(relations, rowid)).order(rowid.desc).limit(10)
+        let query = message_db.select(message_text).filter(contains(relations, rowid)).order(rowid.desc).limit(15)
         
         for message in query
         {
-            messages.append(message[message_text])
+            if (message[message_text] != nil)
+            {
+                messages.append(message[message_text]!)
+            }
+
         }
         
         return messages
